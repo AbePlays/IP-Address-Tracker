@@ -53,21 +53,36 @@
   }
 
   &__details {
+    padding: 2rem 2rem;
     margin: 2rem auto;
-    height: 7rem;
+    min-height: 7rem;
     width: 65rem;
     border-radius: 1rem;
     box-shadow: 0px 0px 5px -3px $darkGrey;
     background-color: white;
     display: flex;
-    align-items: center;
     justify-content: space-around;
+    gap: 2rem;
 
     > * {
       text-align: left;
     }
 
+    > * + * {
+      ::before {
+        content: "";
+        height: 1.7rem;
+        width: 0.1rem;
+        background-color: rgb(226, 226, 226);
+        position: absolute;
+        left: -2rem;
+      }
+    }
+
     &__card {
+      width: 25%;
+      position: relative;
+
       .title {
         font-size: 0.75rem;
         color: $grey;
