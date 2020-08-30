@@ -10,7 +10,7 @@
   font-size: 1.5rem;
 }
 
-.top div {
+.top__input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,7 +19,7 @@
           justify-content: center;
 }
 
-.top div input {
+.top__input input {
   width: 25rem;
   height: 3rem;
   border-style: none;
@@ -29,44 +29,50 @@
   font-family: "Rubik", sans-serif;
 }
 
-.top div input::-webkit-input-placeholder {
+.top__input input::-webkit-input-placeholder {
   color: #969696;
 }
 
-.top div input:-ms-input-placeholder {
+.top__input input:-ms-input-placeholder {
   color: #969696;
 }
 
-.top div input::-ms-input-placeholder {
+.top__input input::-ms-input-placeholder {
   color: #969696;
 }
 
-.top div input::placeholder {
+.top__input input::placeholder {
   color: #969696;
 }
 
-.top div input:focus {
+.top__input input:focus {
   outline: none;
 }
 
-.top div div {
-  background-color: #2b2b2b;
-  height: 3rem;
-  width: 3rem;
+.top__input__button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background-color: #2b2b2b;
+  height: 3rem;
+  width: 3rem;
   border-radius: 0 0.75rem 0.75rem 0;
   cursor: pointer;
   -webkit-transition: background-color 200ms ease-in-out;
   transition: background-color 200ms ease-in-out;
 }
 
-.top div div:hover {
+.top__input__button:hover {
   background-color: #969696;
 }
 
-.top div div img {
+.top__input__button img {
   height: 1rem;
 }
 
