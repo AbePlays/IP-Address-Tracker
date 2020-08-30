@@ -1,0 +1,8 @@
+#map {
+  height: 70vh;
+  z-index: -1;
+
+  @media (max-width: 900px) {
+    height: 60vh;
+  }
+}

@@ -1,12 +1,12 @@
 .top {
   text-align: center;
   background-image: url(../images/pattern-bg.png);
-  height: 14rem;
+  height: 30vh;
 }
 
 @media (max-width: 900px) {
   .top {
-    height: 20rem;
+    height: 40vh;
   }
 }
 
@@ -161,6 +161,17 @@
   font-size: 1.15rem;
   color: #2b2b2b;
   font-weight: 700;
+}
+
+#map {
+  height: 70vh;
+  z-index: -1;
+}
+
+@media (max-width: 900px) {
+  #map {
+    height: 60vh;
+  }
 }
 
 *,

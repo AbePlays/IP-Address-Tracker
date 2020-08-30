@@ -11,7 +11,6 @@ search.addEventListener("click", () => {
   );
 
   let res = regex.test(loc.value);
-  console.log(res);
 
   if (res === false) {
     alert("Please enter a correct address");
@@ -36,10 +35,7 @@ let findDetails = (address: string): void => {
         "," +
         data.location.country;
 
-      console.log(`IP ADDRESS = ${address}`);
-      console.log(`LOCATION = ${location}`);
-      console.log(`TIMEZONE = ${timeZone}`);
-      console.log(`ISP = ${isp}`);
+      loadMap(data.location.lat, data.location.lng);
 
       IPADDRESS.innerText = address;
       LOCATION.innerText = location;
@@ -47,4 +43,32 @@ let findDetails = (address: string): void => {
       ISP.innerText = isp;
     })
     .catch((e) => console.log(e));
+};
+
+let loadMap = (lat: string, lon: string): void => {
+  var mapOptions = {
+    center: [lat, lon],
+    zoom: 15,
+    zoomControl: false,
+  };
+
+  var map = new L.map("map", mapOptions);
+  var layer = new L.TileLayer(
+    "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  );
+  map.addLayer(layer);
+
+  var iconOptions = {
+    iconUrl: "../images/icon-location.svg",
+    iconSize: [35, 45],
+  };
+  var customIcon = L.icon(iconOptions);
+
+  var markerOptions = {
+    title: "MyLocation",
+    icon: customIcon,
+  };
+  var marker = L.marker([lat, lon], markerOptions);
+
+  marker.addTo(map);
 };
