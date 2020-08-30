@@ -3,6 +3,10 @@
   background-image: url(../images/pattern-bg.png);
   height: 14rem;
 
+  @media (max-width: 900px) {
+    height: 20rem;
+  }
+
   h1 {
     padding: 2rem 0;
     color: white;
@@ -12,6 +16,7 @@
   &__input {
     display: flex;
     justify-content: center;
+    padding: 0 1rem;
 
     input {
       width: 25rem;
@@ -21,6 +26,10 @@
       padding-left: 1.25rem;
       font-size: 0.9rem;
       font-family: "Rubik", sans-serif;
+
+      @media (max-width: 350px) {
+        padding-left: 0.5rem;
+      }
 
       &::placeholder {
         color: $grey;
@@ -37,7 +46,7 @@
       align-items: center;
       background-color: $darkGrey;
       height: 3rem;
-      width: 3rem;
+      min-width: 3rem;
       border-radius: 0 0.75rem 0.75rem 0;
       cursor: pointer;
       transition: background-color 200ms ease-in-out;
@@ -56,7 +65,7 @@
     padding: 2rem 2rem;
     margin: 2rem auto;
     min-height: 7rem;
-    width: 65rem;
+    max-width: 65rem;
     border-radius: 1rem;
     box-shadow: 0px 0px 5px -3px $darkGrey;
     background-color: white;
@@ -68,20 +77,39 @@
       text-align: left;
     }
 
-    > * + * {
-      ::before {
-        content: "";
-        height: 1.7rem;
-        width: 0.1rem;
-        background-color: rgb(226, 226, 226);
-        position: absolute;
-        left: -2rem;
+    @media (min-width: 900px) {
+      > * + * {
+        ::before {
+          content: "";
+          height: 1.7rem;
+          width: 0.1rem;
+          background-color: rgb(226, 226, 226);
+          position: absolute;
+          left: -2rem;
+        }
       }
+    }
+
+    @media (max-width: 1100px) {
+      margin: 2rem 1rem;
+    }
+
+    @media (max-width: 900px) {
+      display: block;
     }
 
     &__card {
       width: 25%;
       position: relative;
+
+      @media (max-width: 900px) {
+        width: 100%;
+        text-align: center;
+
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+      }
 
       .title {
         font-size: 0.75rem;
