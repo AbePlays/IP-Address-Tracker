@@ -10,6 +10,8 @@ Thanks for checking out this front-end coding challenge.
 
 The challenge is to build out this IP Address Tracker app. To get the IP Address locations, I used the [IP Geolocation API by IPify](https://geo.ipify.org/) and to generate the map, I used [LeafletJS](https://leafletjs.com/).
 
+NOTE: For best experience please use Firefox to view this project as some css properties are not supported by all browser.
+
 Your users should be able to:
 
 - View the optimal layout for each page depending on their device's screen size
