@@ -1,5 +1,9 @@
 var loc = document.getElementById("address");
 var search = document.getElementById("search");
+var IPADDRESS = document.getElementById("ip-address");
+var LOCATION = document.getElementById("location");
+var TIMEZONE = document.getElementById("timezone");
+var ISP = document.getElementById("isp");
 search.addEventListener("click", function () {
     var regex = new RegExp("((^s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]).){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))s*$)|(^s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]d|1dd|[1-9]?d)(.(25[0-5]|2[0-4]d|1dd|[1-9]?d)){3}))|:)))(%.+)?s*$))");
     var res = regex.test(loc.value);
@@ -19,7 +23,7 @@ var findDetails = function (address) {
         .then(function (data) {
         console.log(data);
         isp = data.isp;
-        timeZone = data.location.timezone;
+        timeZone = "UTC" + data.location.timezone;
         location =
             data.location.city +
                 "," +
@@ -30,5 +34,9 @@ var findDetails = function (address) {
         console.log("LOCATION = " + location);
         console.log("TIMEZONE = " + timeZone);
         console.log("ISP = " + isp);
+        IPADDRESS.innerText = address;
+        LOCATION.innerText = location;
+        TIMEZONE.innerText = timeZone;
+        ISP.innerText = isp;
     })["catch"](function (e) { return console.log(e); });
 };

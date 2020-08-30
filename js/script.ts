@@ -1,5 +1,9 @@
 let loc = document.getElementById("address") as HTMLInputElement;
 let search = document.getElementById("search");
+let IPADDRESS = document.getElementById("ip-address");
+let LOCATION = document.getElementById("location");
+let TIMEZONE = document.getElementById("timezone");
+let ISP = document.getElementById("isp");
 
 search.addEventListener("click", () => {
   let regex = new RegExp(
@@ -16,15 +20,15 @@ search.addEventListener("click", () => {
   }
 });
 
-let findDetails = (address) => {
-  let apiKey = "YOUR_API_KEY";
-  let isp, timeZone, location;
+let findDetails = (address: string): void => {
+  let apiKey: string = "YOUR_API_KEY";
+  let isp: string, timeZone: string, location: string;
   fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${address}`)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
       isp = data.isp;
-      timeZone = data.location.timezone;
+      timeZone = "UTC" + data.location.timezone;
       location =
         data.location.city +
         "," +
@@ -36,6 +40,11 @@ let findDetails = (address) => {
       console.log(`LOCATION = ${location}`);
       console.log(`TIMEZONE = ${timeZone}`);
       console.log(`ISP = ${isp}`);
+
+      IPADDRESS.innerText = address;
+      LOCATION.innerText = location;
+      TIMEZONE.innerText = timeZone;
+      ISP.innerText = isp;
     })
     .catch((e) => console.log(e));
 };
