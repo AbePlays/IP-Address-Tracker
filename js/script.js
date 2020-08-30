@@ -11,4 +11,9 @@ search.addEventListener("click", function () {
         findDetails(loc.value);
     }
 });
-var findDetails = function (address) { };
+var findDetails = function (address) {
+    var apiKey = "YOUR_API_KEY";
+    fetch("https://geo.ipify.org/api/v1?apiKey=" + apiKey + "&ipAddress=" + address)
+        .then(function (res) { return res.json(); })
+        .then(function (data) { return console.log(data); })["catch"](function (e) { return console.log(e); });
+};

@@ -16,4 +16,10 @@ search.addEventListener("click", () => {
   }
 });
 
-let findDetails = (address) => {};
+let findDetails = (address) => {
+  let apiKey = "YOUR_API_KEY";
+  fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${address}`)
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((e) => console.log(e));
+};
