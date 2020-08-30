@@ -13,7 +13,22 @@ search.addEventListener("click", function () {
 });
 var findDetails = function (address) {
     var apiKey = "YOUR_API_KEY";
+    var isp, timeZone, location;
     fetch("https://geo.ipify.org/api/v1?apiKey=" + apiKey + "&ipAddress=" + address)
         .then(function (res) { return res.json(); })
-        .then(function (data) { return console.log(data); })["catch"](function (e) { return console.log(e); });
+        .then(function (data) {
+        console.log(data);
+        isp = data.isp;
+        timeZone = data.location.timezone;
+        location =
+            data.location.city +
+                "," +
+                data.location.region +
+                "," +
+                data.location.country;
+        console.log("IP ADDRESS = " + address);
+        console.log("LOCATION = " + location);
+        console.log("TIMEZONE = " + timeZone);
+        console.log("ISP = " + isp);
+    })["catch"](function (e) { return console.log(e); });
 };

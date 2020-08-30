@@ -18,8 +18,24 @@ search.addEventListener("click", () => {
 
 let findDetails = (address) => {
   let apiKey = "YOUR_API_KEY";
+  let isp, timeZone, location;
   fetch(`https://geo.ipify.org/api/v1?apiKey=${apiKey}&ipAddress=${address}`)
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      console.log(data);
+      isp = data.isp;
+      timeZone = data.location.timezone;
+      location =
+        data.location.city +
+        "," +
+        data.location.region +
+        "," +
+        data.location.country;
+
+      console.log(`IP ADDRESS = ${address}`);
+      console.log(`LOCATION = ${location}`);
+      console.log(`TIMEZONE = ${timeZone}`);
+      console.log(`ISP = ${isp}`);
+    })
     .catch((e) => console.log(e));
 };
